@@ -28,6 +28,8 @@ public class ArmControlCommand extends Command {
 			speed = 0.4;
 		} else if (Robot.oi.joystickDriver.getRawButton(2)) { // Uhhh
 			speed = 0.2;
+		} else {
+			speed = 0;
 		}
 		Robot.armSubsystem.setSpeed(speed);
 
