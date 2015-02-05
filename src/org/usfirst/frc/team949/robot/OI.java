@@ -9,12 +9,12 @@ import edu.wpi.first.wpilibj.Joystick;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-	public Joystick joystickDriver;
-	public Joystick joystickPlayer;
+	public Joystick driverJoystick;
+	public Joystick playerJoystick;
    
 	public OI() {
-		joystickDriver = new Joystick(0);
-		joystickPlayer = new Joystick(1);
+		driverJoystick = new Joystick(0);
+		playerJoystick = new Joystick(1);
 	}
     
     

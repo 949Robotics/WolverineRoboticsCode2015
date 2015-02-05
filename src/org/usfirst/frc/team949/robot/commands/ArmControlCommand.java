@@ -3,11 +3,15 @@ package org.usfirst.frc.team949.robot.commands;
 import org.usfirst.frc.team949.robot.Robot;
 import org.usfirst.frc.team949.robot.subsystems.ArmSubsystem;
 
+import edu.wpi.first.wpilibj.Joystick.AxisType;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class ArmControlCommand extends Command {
 
-	private double speed = 0.3;
+	private double speed = 0.2;
+	private double speedStep = 0.2;
+	private double maxSpeed = 1;
+	private double joystickThreshhold = 0.5;
 
 	public ArmControlCommand() {
 		requires(Robot.armSubsystem);
@@ -20,19 +24,23 @@ public class ArmControlCommand extends Command {
 
 	@Override
 	protected void execute() {
-		if (Robot.oi.joystickDriver.getRawButton(5)) { // Strongest
-			speed = 0.8;
-		} else if (Robot.oi.joystickDriver.getRawButton(3)) { // Ok
+		if (Robot.oi.playerJoystick.getRawButton(5)) {
+			speed = 1;
+		} else if (Robot.oi.playerJoystick.getRawButton(3)) {
 			speed = 0.6;
-		} else if (Robot.oi.joystickDriver.getRawButton(4)) { // Meh
+		} else if (Robot.oi.playerJoystick.getRawButton(6)) {
 			speed = 0.4;
-		} else if (Robot.oi.joystickDriver.getRawButton(2)) { // Uhhh
+		} else if (Robot.oi.playerJoystick.getRawButton(4)) {
 			speed = 0.2;
-		} else {
-			speed = 0;
 		}
-		Robot.armSubsystem.setSpeed(speed);
 
+		if (Robot.oi.playerJoystick.getY() >= joystickThreshhold) {
+			Robot.armSubsystem.setSpeed(-speed);
+		} else if (Robot.oi.playerJoystick.getY() <= -joystickThreshhold) {
+			Robot.armSubsystem.setSpeed(speed);
+		} else {
+			Robot.armSubsystem.setSpeed(0);
+		}
 	}
 
 	@Override

@@ -23,9 +23,9 @@ public class DriveTrain extends Subsystem {
 	
 	public DriveTrain() {
 		drive = new RobotDrive(frontLeft, backLeft, frontRight, backRight);
-		drive.setInvertedMotor(MotorType.kFrontLeft, false);
+		drive.setInvertedMotor(MotorType.kFrontLeft, true);
 		drive.setInvertedMotor(MotorType.kFrontRight, false);
-		drive.setInvertedMotor(MotorType.kRearLeft, true);
+		drive.setInvertedMotor(MotorType.kRearLeft, false);
 		drive.setInvertedMotor(MotorType.kRearRight, true);
 	}
 

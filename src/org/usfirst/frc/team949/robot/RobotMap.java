@@ -13,8 +13,8 @@ import edu.wpi.first.wpilibj.RobotDrive;
 public class RobotMap {
     // For example to map the left and right motors, you could define the
     // following variables to use with your drivetrain subsystem.
-	public static final int frontRight = 2;
-	public static final int frontLeft = 1;
+	public static final int frontRight = 1;
+	public static final int frontLeft = 2;
     
     public static final int backRight = 3;
     public static final int backLeft = 0;
